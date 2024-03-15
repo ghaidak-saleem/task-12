@@ -34,39 +34,26 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::middleware('guest')->group(function(){
-    Route::post('register',[AuthController::class,'register']);
-    Route::post('login',[AuthController::class,'login']);
+Route::middleware('guest')->group(function () {
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('login', [AuthController::class, 'login']);
 });
 
-Route::middleware(['auth:sanctum'])->group(function()
-{
-Route::post('logout',[AuthController::class,'logout']);
-Route::resource('abouts',AboutController::class);
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::resource('abouts', AboutController::class);
 
-Route::resource('certificates', CertificateController::class);
-Route::resource('communicates', CommunicateController::class);
-Route::resource('cvs', CvController::class);
-Route::resource('educatedegrees', EducatedegreeController::class);
-Route::resource('experiences', ExperienceController::class);
-Route::resource('projects', ProjectController::class);
-Route::resource('services', ServiceController::class);
-Route::resource('skills', SkillController::class);
-Route::resource('images', ImageController::class);
-Route::resource('jobs', JobController::class);
-
-// Route::middleware('PortfolioOwner')->get('portfolio',[DashboardController::class,'ShowPortfolioSections']);
-// Route::put('portfolio/updateAbout',[DashboardController::class,'updateAbout']);
-// Route::put('portfolio/updateCertificate/{id}',[DashboardController::class,'updateCertificate']);
-// Route::put('portfolio/updateCommunicate/{id}',[DashboardController::class,'updateCommunicate']);
-// Route::put('portfolio/updateCv/',[DashboardController::class,'updateCv']);
-// Route::put('portfolio/updateEducateDegree/{id}',[DashboardController::class,'updateEducateDegree']);
-// Route::put('portfolio/updateExperience/{id}',[DashboardController::class,'updateExperience']);
-// Route::put('portfolio/updateProject/{id}',[DashboardController::class,'updateProject']);
-// Route::put('portfolio/updateSkill/{id}',[DashboardController::class,'updateSkill']);
+    Route::resource('certificates', CertificateController::class);
+    Route::resource('communicates', CommunicateController::class);
+    Route::resource('cvs', CvController::class);
+    Route::resource('educatedegrees', EducatedegreeController::class);
+    Route::resource('experiences', ExperienceController::class);
+    Route::resource('projects', ProjectController::class);
+    Route::resource('services', ServiceController::class);
+    Route::resource('skills', SkillController::class);
+    Route::resource('images', ImageController::class);
+    Route::resource('jobs', JobController::class);
 
 
-// });
-
-Route::get('portfolio/',[PortfolioController::class,'showPortfolio']);
+    Route::get('portfolio/', [PortfolioController::class, 'showPortfolio']);
 });
